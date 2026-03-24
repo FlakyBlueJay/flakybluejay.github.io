@@ -1,0 +1,35 @@
+---
+import Breadcrumbs from '@/components/breadcrumbs.astro'
+import Link from '@/components/link.astro'
+import PageHead from '@/components/page-head.astro'
+import ProjectCard from '@/components/project-card.astro'
+import Layout from '@/layouts/layout.astro'
+import { getAllProjects } from '@/lib/data-utils'
+
+const projects = await getAllProjects()
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="Projects" />
+  <Breadcrumbs items={[{ label: 'Projects', icon: 'lucide:folder-dot' }]} />
+
+  <section>
+    <div class="min-w-full">
+
+      <h2 class="mb-4 text-2xl font-medium">Current Projects</h2>
+      <div class="flex flex-col gap-4">
+        {projects.filter((project) => !project.data.isArchived).map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="min-w-full">
+
+      <h2 class="mb-4 text-2xl font-medium">Archived Projects</h2>
+      <div class="flex flex-col gap-4">
+        {projects.filter((project) => project.data.isArchived).map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</Layout>
