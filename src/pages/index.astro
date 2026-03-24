@@ -1,11 +1,14 @@
 ---
 import BlogCard from '@/components/blog-card.astro'
 import Link from '@/components/link.astro'
+import { Image } from 'astro:assets';
 import PageHead from '@/components/page-head.astro'
 import { buttonVariants } from '@/components/ui/button'
 import { SITE } from '@/consts'
 import Layout from '@/layouts/layout.astro'
 import { getRecentPosts } from '@/lib/data-utils'
+import fursona from './assets/images/fursona.png';
+
 
 const blog = await getRecentPosts(SITE.featuredPostCount)
 ---
@@ -14,48 +17,35 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
   <PageHead slot="head" title="Home" />
   <section class="rounded-lg border">
     <div class="flex flex-col space-y-1.5 p-6">
-      <h3 class="text-3xl leading-none font-medium">er·u·dite</h3>
-      <p class="text-muted-foreground text-sm">
-        /ˈer(y)əˌdīt/ &bull; <span class="font-medium">adjective</span>
-      </p>
+      <h3 class="text-3xl leading-none font-medium">Welcome!</h3>
     </div>
+        <Image src={fursona}
+      alt=""
+      widths={[fursona.width]}
+      class="w-32 float-right object-scale-down ml-4"/>
     <div class="p-6 pt-0">
       <p class="text-muted-foreground mb-2 text-sm">
-        astro-erudite is an opinionated, unstyled static blogging template built
-        with <Link
-          href="https://astro.build"
-          class="text-foreground"
-          external
-          underline>Astro</Link
-        >, <Link
-          href="https://tailwindcss.com"
-          class="text-foreground"
-          external
-          underline>Tailwind</Link
-        >, and <Link
-          href="https://ui.shadcn.com"
-          class="text-foreground"
-          external
-          underline>shadcn/ui</Link
-        >. Extraordinarily loosely based on the <Link
-          href="https://astro-micro.vercel.app/"
-          class="text-foreground"
-          external
-          underline>Astro Micro</Link
-        > theme.
+        I'm Flaky, an autistic/ADHD blue jay from the UK, mainly doing projects focused on music metadata, such as:
+        
+        <ul class="list-disc list-inside mb-2 text-sm text-muted-foreground">
+          <li>
+            <Link href="https://github.com/FlakyBlueJay/mb_musicbrainzsync"
+            class="text-foreground"
+            underline
+            external>mb_MusicBrainzSync</Link>, a plugin for sending user tags/ratings to MusicBrainz via MusicBee</li>
+          <li>the <Link href="https://github.com/FlakyBlueJay/mb-rym-hierarchy"
+            class="text-foreground"
+            underline
+            external>RateYourMusic tag hierarchy template</Link> for MusicBee based on Rate Your Music's genre, descriptor and scenes & movements trees</li>
+          <li>the <Link href="https://github.com/FlakyBlueJay/TagHierarchyManager"
+            class="text-foreground"
+            underline
+            external>Tag Hierarchy Manager</Link> for managing complex tag hierarchy templates</li>
+        </ul>
       </p>
       <p class="text-muted-foreground text-sm">
-        To use this template, check out the <Link
-          href="https://github.com/jktrn/astro-erudite"
-          class="text-foreground"
-          underline
-          external>GitHub</Link
-        > repository. To learn more about why this template exists, read this blog
-        post: <Link
-          href="/blog/the-state-of-static-blogs"
-          class="text-foreground"
-          underline>The State of Static Blogs in 2024</Link
-        >.
+        
+        You can find me on <Link href="https://bsky.app/profile/flaky.bluejay" class="text-foreground" underline external>Bluesky</Link>, <Link href="https://furry.engineer/@Flaky" class="text-foreground" underline external>Mastodon</Link>, <Link href="https://rateyourmusic.com/~flaky_bastard" class="text-foreground" underline external>Rate Your Music</Link>, <Link href="https://www.last.fm/user/DonWada" class="text-foreground" underline external>Last.fm</Link>, and <Link href="https://github.com/FlakyBlueJay" class="text-foreground" underline external>GitHub</Link>.
       </p>
     </div>
   </section>
