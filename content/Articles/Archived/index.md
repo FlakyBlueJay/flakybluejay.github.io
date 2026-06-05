@@ -1,0 +1,1 @@
+This is a dump for old blog posts from back when the site was a proper blog. Stuff that doesn't fit this site, but I don't want to get rid of, just yet.

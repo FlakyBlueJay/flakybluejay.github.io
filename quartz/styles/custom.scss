@@ -1,3 +1,8 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+a.nav-file-title::before {
+  content: "‣ ";
+}
+
